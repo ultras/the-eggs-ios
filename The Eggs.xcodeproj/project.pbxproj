@@ -2859,8 +2859,8 @@
 				ED73734A11089C2700879087 /* ui */,
 			);
 			name = OpenFeint;
-			path = ../OpenFeint.2.4.2/OpenFeint;
-			sourceTree = SOURCE_ROOT;
+			path = OpenFeint.2.4.2/OpenFeint;
+			sourceTree = "<group>";
 		};
 		ED736F4A11089C2600879087 /* api */ = {
 			isa = PBXGroup;
