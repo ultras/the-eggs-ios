@@ -230,7 +230,12 @@ typedef enum {
 		key = @"";
 		secret = @"";
 		name = NSLocalizedString(@"The Eggs", @"The Eggs");
-	}
+	} else
+    {
+		key = @"";
+		secret = @"";
+        name = NSLocalizedString(@"The Eggs", @"The Eggs");
+    }
 	
 	// orientation and other settings
 	NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -345,7 +350,6 @@ typedef enum {
 	// gameId is defined by the bundle id
 	NSString *bundleId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
 	NSString *gamePrefix = [[bundleId componentsSeparatedByString:@"."] lastObject];
-	//	gamePrefix = @"thewolf";    // DEBUG
 	NSArray *keysArray = [gamePrefixesDic allKeysForObject:gamePrefix];
 	if (keysArray && keysArray.count > 0) {
 		gameId = [[keysArray objectAtIndex:0] integerValue];
@@ -386,10 +390,6 @@ typedef enum {
 	NSLog(@"\nDisplay name: %@, Name: %@, ID: %@ Prefix: %@ game ID: %d", bundleDisplayName, bundleName, bundleId, gamePrefix, gameId);
 #endif
 	
-	// read current game id from user defaults
-	// DEBUG: use next line to clear prefix problems
-	//currentGameId = gameId;	// DEBUG
-	
 	currentGameId = [[NSUserDefaults standardUserDefaults] integerForKey:kCurrentGameIdKey];
 	// why are we so sure that at first start the 0 is always read?
 	// maybe this is a possible reason for all reported crashes on game start up
@@ -402,13 +402,17 @@ typedef enum {
 		}
 	}
 	
-	//currentGameId = gameID_TheWolf;	// DEBUG
-	
 	// correct invalid game id
 	if (!validGameId || currentGameId == gameID_Unknown) {
 		// by default set to the wolf (the eggs?) in case of all in one and to game id for single version
 		currentGameId = ((gameId == gameID_TheCatching || gameId == gameID_TheEggsPro) ? gameID_TheEggs : gameId);
 	}
+    
+    // NOTE (serhiys): always have a game
+    if (gameID_Unknown == currentGameId)
+    {
+        currentGameId = gameId = gameID_TheEggs;
+    }
 	
 	// save the old game id (for all-in-one collection)
 	oldGameId = currentGameId;	

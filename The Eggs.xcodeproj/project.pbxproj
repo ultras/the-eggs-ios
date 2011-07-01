@@ -8187,7 +8187,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -8202,7 +8202,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -8218,7 +8218,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01653739-8816-4E91-8C70-E0D097CCB483";
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos;
 			};
 			name = Distribution;
 		};
